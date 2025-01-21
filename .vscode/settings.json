@@ -2,6 +2,11 @@
     "files.associations": {
         "EVEN.C": "cpp",
         "FABONACCI_SERISE.C": "cpp",
-        "FABONACCI_RECURSION.C.C": "cpp"
+        "FABONACCI_RECURSION.C.C": "cpp",
+        "FABONACCI_RECURSION.C": "cpp",
+        "EVEN_ODD.C": "cpp",
+        "FACTORIAL_FUNCTION.C": "cpp",
+        "FACTORAL.C": "cpp",
+        "ADDRESS_POINTER.C": "cpp"
     }
 }
