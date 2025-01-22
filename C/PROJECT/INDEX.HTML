@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f8ff;
+        }
+        .weather-app {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .weather-app input {
+            padding: 10px;
+            width: 200px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .weather-app button {
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .weather-app button:hover {
+            background-color: #0056b3;
+        }
+        .weather-result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="weather-app">
+    <h1>Weather App</h1>
+    <input type="text" id="city" placeholder="Enter city name" />
+    <button onclick="getWeather()">Get Weather</button>
+    <div class="weather-result" id="weatherResult"></div>
+</div>
+
+<script>
+    async function getWeather() {
+        const apiKey = "04de848bb0cd44eb9a894838252201";
+        const city = document.getElementById("city").value;
+        const weatherResult = document.getElementById("weatherResult");
+
+        if (!city) {
+            weatherResult.innerHTML = "<p style='color: red;'>Please enter a city name.</p>";
+            return;
+        }
+
+        const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${encodeURIComponent(city)}`;
+
+        try {
+            const response = await fetch(url);
+
+            if (!response.ok) {
+                throw new Error("City not found");
+            }
+
+            const data = await response.json();
+
+            weatherResult.innerHTML = `
+                <h3>${data.location.name}, ${data.location.country}</h3>
+                <p><strong>Temperature:</strong> ${data.current.temp_c}°C</p>
+                <p><strong>Condition:</strong> ${data.current.condition.text}</p>
+                <img src="${data.current.condition.icon}" alt="Weather icon" />
+            `;
+        } catch (error) {
+            weatherResult.innerHTML = `<p style='color: red;'>Error: ${error.message}</p>`;
+        }
+    }
+</script>
+
+</body>
+</html>
