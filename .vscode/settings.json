@@ -7,6 +7,8 @@
         "EVEN_ODD.C": "cpp",
         "FACTORIAL_FUNCTION.C": "cpp",
         "FACTORAL.C": "cpp",
-        "ADDRESS_POINTER.C": "cpp"
+        "ADDRESS_POINTER.C": "cpp",
+        "MERGE_ARRAY.C": "cpp",
+        "REVERSE.C": "cpp"
     }
 }
